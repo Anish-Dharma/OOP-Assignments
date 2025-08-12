@@ -1,0 +1,71 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee {
+	
+private:
+    string name, dept, date, addr;
+    int id;
+    string tel;
+    static int count;
+
+public:
+    
+    Employee() {
+        cout << "\nEnter Employee Details:\n";		// Constructor
+        cout << "Name: ";
+        cin >> name;
+        cout << "Employee ID: ";
+        cin >> id;
+        cout << "Department: ";
+        cin >> dept;
+        cout << "Date of Joining (dd/mm/yyyy): ";
+        cin >> date;
+        cout << "Permanent Address: ";
+        cin >> addr;
+        cout << "Telephone Number: ";
+        cin >> tel;
+
+        count++;
+    }
+   
+    ~Employee() {
+        cout << "\nDeleted Employee " << count;		 // Destructor
+        count--;
+    }
+
+    void dispdetails() {
+        cout << "\nEmployee Details:\n";		// Display details
+        cout << "Name: " << name << endl;
+        cout << "Employee ID: " << id << endl;
+        cout << "Department: " << dept << endl;
+        cout << "Date of Joining: " << date << endl;
+        cout << "Permanent Address: " << addr << endl;
+        cout << "Telephone Number: " << tel << endl;
+    }
+   
+    static void dispcount() {		// Static count display
+        cout << "\nNumber of Employees: " << count << endl;
+    }
+};
+
+int Employee::count = 0;
+
+int main() {
+    int n;
+    cout << " Enter number of employees: ";
+    cin >> n;
+	
+    Employee * employees = new Employee[n];
+	
+    for (int i = 0; i < n; i++) {
+        cout << "\nEmployee " << (i + 1) << " : ";
+        employees[i].dispdetails();
+        Employee::dispcount();
+    }
+	
+    delete[] employees;  
+	
+    return 0;
+}

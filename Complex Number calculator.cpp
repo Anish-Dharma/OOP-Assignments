@@ -18,12 +18,6 @@ public:
 		imag = i;
 	}
 
-	// Copy Constructor
-	Complex(const Complex &c) {
-		real = c.real;
-		imag = c.imag;
-	}
-
 	// Overloading '+' operator using member function
 	Complex operator+(const Complex &c) {
 		return Complex(real + c.real, imag + c.imag);

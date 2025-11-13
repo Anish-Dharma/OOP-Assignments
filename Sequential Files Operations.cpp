@@ -41,8 +41,7 @@ int main() {
 	ofstream fout("File.txt", ios::out);
 	for (int i = 0; i < 5; i++) {
 		item[i].input();
-		fout << item[i].name << " " << item[i].id << " "
-		     << item[i].price << " " << item[i].quantity << endl;
+		fout << item[i].name << " " << item[i].id << " " << item[i].price << " " << item[i].quantity << endl;
 	}
 	fout.close();
 

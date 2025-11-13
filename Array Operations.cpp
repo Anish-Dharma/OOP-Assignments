@@ -6,19 +6,17 @@ using Generic Programming..*/
 using namespace std;
 template<class T>
 
-//Selection sort
-void sort(T a[],int n) {
-	int i,j;
-	for(i=0; i<n-1; i++) {
-		for(j=i+1; j<n; j++)
-		{	if(a[i]>a[j])
-			{	T temp;
-				temp=a[i];
-				a[i]=a[j];
-				a[j]=temp;
-			}
-		}
-	}
+ // Bubble Sort
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                T temp = a[j];
+                a[j] = a[j + 1];
+                a[j + 1] = temp;
+            }
+        }
+    }
+
 //Display Sorted array 
 for(i=0;i<n;i++)
 	{

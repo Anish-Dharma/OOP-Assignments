@@ -3,55 +3,56 @@ data members and member functions. Perform read and write operations using class
 objects.*/
 
 #include <iostream>
-#include <fstream>
 #include <string>
-
+#include <fstream>
 using namespace std;
 
-class inventory{
-	public:
+class inventory {
+public:
 	string name;
 	int id, quantity;
 	double price;
-	
-	void input(){
-		cout<<"Enter item name:  ";
-		cin>>name;
-		cout<<"Enter item id: ";
-		cin >>id;
-		cout<<"Enter number of items: ";
-		cin>>quantity;
-		cout<<"Enter price: ";
-		cin>>price;
-		}
-	
-	void display(){
-		cout<<"---Item Details---"<<endl;
-		cout<<"Item name: "<<name<<endl;
-		cout<<"Item id: "<<id<<endl;
-		cout<<"Number of item: "<<quantity<<endl;
-		cout<<"Item price: "<<price<<endl;
-		}
-	
-	};
 
-int main(){
-	ofstream fout;
+	void input() {
+		cout << "Enter item name: ";
+		cin >> name;
+		cout << "Enter item id: ";
+		cin >> id;
+		cout << "Enter item price: ";
+		cin >> price;
+		cout << "Enter number of items: ";
+		cin >> quantity;
+		cout << endl;
+	}
+
+	void display() {
+		cout << "---Item Details---" << endl;
+		cout << "Name: " << name << endl;
+		cout << "ID: " << id << endl;
+		cout << "Price: " << price << endl;
+		cout << "Quantity: " << quantity << endl;
+		cout << endl;
+	}
+};
+
+int main() {
 	inventory item[5];
-	fout.open("File.txt",ios::out | ios::app);
-	for(int i=0; i<5; i++){
-		cout<<"\n\nEnter details for item "<<i+1<<endl;
+
+	ofstream fout("File.txt", ios::out);
+	for (int i = 0; i < 5; i++) {
 		item[i].input();
-		fout<<item[i].name<<" "<<item[i].id<<" "<<item[i].quantity<<" "<<item[i].price<<endl;
+		fout << item[i].name << " " << item[i].id << " "
+		     << item[i].price << " " << item[i].quantity << endl;
 	}
 	fout.close();
-	
-	ifstream fin;
-	fin.open("File.txt",ios::in);
-	for(int i =0; i<5; i++){
-		cout<<"\n\nDetails for item "<<i+1<<endl;
+
+	ifstream fin("File.txt", ios::in);
+	for (int i = 0; i < 5; i++) {
+		fin >> item[i].name >> item[i].id >> item[i].price >> item[i].quantity;
+		cout << "Details for item " << i + 1 << endl;
 		item[i].display();
 	}
 	fin.close();
+
 	return 0;
-	}
+}

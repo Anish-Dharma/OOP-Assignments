@@ -19,20 +19,20 @@ public:
 	}
 
 	// Overloading '+' operator using member function
-	Complex operator+(const Complex &c) {
+	Complex operator+(Complex &c) {
 		return Complex(real + c.real, imag + c.imag);
 	}
 
 	// Overloading '*' operator using friend function
-	friend Complex operator*(const Complex &c1, const Complex &c2);
+	friend Complex operator*(Complex &c1, Complex &c2);
 
 	// Overloading '>>' and '<<' operators
 	friend istream& operator>>(istream &in, Complex &c);
-	friend ostream& operator<<(ostream &out, const Complex &c);
+	friend ostream& operator<<(ostream &out, Complex &c);
 };
 
 // Definition of friend function for multiplication
-Complex operator*(const Complex &c1, const Complex &c2) {
+Complex operator*(Complex &c1, Complex &c2) {
 	float r = (c1.real * c2.real) - (c1.imag * c2.imag);
 	float i = (c1.real * c2.imag) + (c1.imag * c2.real);
 	return Complex(r, i);
@@ -48,7 +48,7 @@ istream& operator>>(istream &in, Complex &c) {
 }
 
 // Overload '<<' operator for output
-ostream& operator<<(ostream &out, const Complex &c) {
+ostream& operator<<(ostream &out, Complex &c) {
 	out << c.real;
 	if (c.imag >= 0)
 		out << " + " << c.imag << "i";

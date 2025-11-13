@@ -25,12 +25,7 @@ for(i=0;i<n;i++)
 	cout<<endl;
 }
 
-int main()
-{	
-
-
-
-
+int main(){	
 int choice;
 
 	do{
